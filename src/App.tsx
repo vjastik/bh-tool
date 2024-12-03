@@ -12,18 +12,12 @@ const GH_PAGES_PATH = "/bh-tool";
 export default function App() {
   return (
     <Provider store={store}>
-      <Router>
+      <Router basename={GH_PAGES_PATH}>
         <LanguageSelector />
         <Routes>
-          <Route path={`${GH_PAGES_PATH}/`} element={<CharacterList />} />
-          <Route
-            path={`${GH_PAGES_PATH}/character/new`}
-            element={<CharacterForm />}
-          />
-          <Route
-            path={`${GH_PAGES_PATH}/character/:id`}
-            element={<CharacterDetails />}
-          />
+          <Route path="/" element={<CharacterList />} />
+          <Route path="/character/new" element={<CharacterForm />} />
+          <Route path="/character/:id" element={<CharacterDetails />} />
         </Routes>
       </Router>
     </Provider>
