@@ -85,6 +85,11 @@ const translation: Translation = {
       },
       damage: "Damage",
     },
+    roll: {
+      title: "Choose die to roll",
+      button: "Roll",
+      rolling: "Rolling...",
+    }
   },
 };
 

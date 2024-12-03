@@ -80,5 +80,10 @@ export interface Translation {
       };
       damage: string;
     };
+    roll: {
+      title: string;
+      button: string;
+      rolling: string;
+    }
   };
 }

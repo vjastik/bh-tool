@@ -29,7 +29,7 @@ export default function LanguageSelector() {
   };
 
   return (
-    <div className="fixed top-4 right-4" ref={dropdownRef}>
+    <div className="relative" ref={dropdownRef}>
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="p-2 bg-dark-300/50 rounded-lg border border-dark-100 hover:border-primary-500/50 transition-colors"
@@ -39,7 +39,7 @@ export default function LanguageSelector() {
       </button>
 
       {isOpen && (
-        <div className="absolute right-0 mt-2 w-48 bg-dark-400 rounded-lg border border-dark-100 shadow-lg overflow-hidden">
+        <div className="absolute right-0 mt-2 w-48 bg-dark-400 rounded-lg border border-dark-100 shadow-lg overflow-hidden z-50">
           {LANGUAGES.map((lang) => (
             <button
               key={lang.code}

@@ -85,6 +85,11 @@ const translation: Translation = {
       },
       damage: "Пошкодження",
     },
+    roll: {
+      title: "Виберіть кістку для кидка",
+      button: "Кинути",
+      rolling: "Крутимо...",
+    }
   },
 };
 
