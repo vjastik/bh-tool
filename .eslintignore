@@ -1,0 +1,17 @@
+# Client
+dist
+node_modules
+public
+scripts
+functions
+
+# Create React App files
+src/setupProxy.js
+src/serviceWorker.js
+
+README.md
+*.scss
+*.png
+*.svg
+*.lock
+Dockerfile

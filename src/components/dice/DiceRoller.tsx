@@ -39,7 +39,7 @@ export const DiceRoller: React.FC<RollDialogProps> = props => {
 
     // Clear any existing timeouts
     if (animationTimeoutRef.current) {
-      clearTimeout(animationTimeoutRef.current)
+      clearTimeout(animationTimeoutRef.current as number)
     }
 
     // Play the sequence
@@ -48,6 +48,13 @@ export const DiceRoller: React.FC<RollDialogProps> = props => {
       animationTimeoutRef.current = setTimeout(() => {
         setCurrentValue(value)
         if (index === sequence.length - 1) {
+          if ('vibrate' in navigator) {
+            // Vibration is supported
+            navigator.vibrate([100, 100, 100]);
+          } else {
+            // Vibration is not supported
+            console.log('Vibration is not supported on this device.');
+          }
           setIsRolling(false)
         }
       }, totalDelay)

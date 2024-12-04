@@ -14,6 +14,12 @@ export interface CharacterFeature {
   description: string;
 }
 
+export interface CharacterCondition {
+  id: string;
+  name: string;
+  color: string;
+}
+
 export interface CharacterSkill {
   id: string;
   name: string;
@@ -38,6 +44,7 @@ export interface Character {
   features: CharacterFeature[];
   skills: CharacterSkill[];
   pockets: (Item | null)[];
+  conditions: CharacterCondition[];
   backpack: Item[];
   weapon: Item | null;
 }

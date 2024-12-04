@@ -12,6 +12,7 @@ export interface Translation {
       empty: string;
       name: string;
       description: string;
+      search: string;
     };
     characters: {
       title: string;
@@ -49,6 +50,28 @@ export interface Translation {
         name: string;
         description: string;
       };
+    };
+    conditions: {
+      title: string;
+      add: string;
+      empty: string;
+      new: {
+        name: string;
+        description: string;
+      };
+      blind: string;
+      charmed: string;
+      deafened: string;
+      frightened: string;
+      grappled: string;
+      invisible: string;
+      paralyzed: string;
+      petrified: string;
+      poisoned: string;
+      prone: string;
+      restrained: string;
+      stunned: string;
+      unconscious: string;
     };
     skills: {
       title: string;

@@ -35,6 +35,7 @@ import Card from './ui/Card'
 import PageContainer from './ui/PageContainer'
 import { Characteristics } from './character/details/Characteristics'
 import { RollButton } from './dice/RollButton'
+import { ConditionsList } from './character/conditions/ConditionList'
 
 export default function CharacterDetails() {
   const { id } = useParams()
@@ -117,7 +118,7 @@ export default function CharacterDetails() {
 
   return (
     <PageContainer>
-      <div className="flex justify-between mb-6 sm:mb-8">
+      <div className='flex justify-between mb-6 sm:mb-8'>
         <Button
           icon={ArrowLeft}
           variant='secondary'
@@ -160,6 +161,10 @@ export default function CharacterDetails() {
 
         <Card>
           <Characteristics />
+        </Card>
+
+        <Card>
+          <ConditionsList />
         </Card>
 
         <Card>

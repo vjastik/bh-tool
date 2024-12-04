@@ -1,11 +1,11 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import {
-  Character,
+  Character, CharacterCondition,
   CharacterFeature,
   CharacterSkill,
   CharacterStats,
-  Item,
-} from "../types/character";
+  Item
+} from '../types/character'
 import { getDiceValue, getDiceIndex } from "../utils/dice";
 import { loadCharacters } from "../utils/storage";
 
@@ -21,6 +21,7 @@ const initialState: CharacterState = {
     pockets: char.pockets || [null, null, null, null],
     backpack: char.backpack || [],
     weapon: char.weapon || null,
+    conditions: char.conditions || [],
   })),
 };
 
@@ -35,6 +36,7 @@ const characterSlice = createSlice({
         skills: [],
         pockets: [null, null, null, null],
         backpack: [],
+        conditions: [],
         weapon: null,
       });
     },
@@ -68,6 +70,7 @@ const characterSlice = createSlice({
           skills: action.payload.skills || [],
           pockets: action.payload.pockets || [null, null, null, null],
           backpack: action.payload.backpack || [],
+          conditions: action.payload.conditions || [],
           weapon: action.payload.weapon || null,
         };
       }
@@ -76,6 +79,31 @@ const characterSlice = createSlice({
       state.characters = state.characters.filter(
         (char) => char.id !== action.payload
       );
+    },
+    addCondition: (
+      state,
+      action: PayloadAction<{ characterId: string; condition: CharacterCondition }>
+    ) => {
+      const character = state.characters.find(
+        (char) => char.id === action.payload.characterId
+      );
+      if (character) {
+        character.conditions = character.conditions || [];
+        character.conditions.push(action.payload.condition);
+      }
+    },
+    deleteCondition: (
+      state,
+      action: PayloadAction<{ characterId: string; conditionId: string }>
+    ) => {
+      const character = state.characters.find(
+        (char) => char.id === action.payload.characterId
+      );
+      if (character && character.conditions) {
+        character.conditions = character.conditions.filter(
+          (f) => f.id !== action.payload.conditionId
+        );
+      }
     },
     addFeature: (
       state,
@@ -247,6 +275,8 @@ export const {
   updateStats,
   updateCharacter,
   deleteCharacter,
+  addCondition,
+  deleteCondition,
   addFeature,
   updateFeature,
   deleteFeature,
